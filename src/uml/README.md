@@ -1,10 +1,10 @@
 # UML Diagrams
 
 ## Use Case
-![UseCase](UseCaseDiagram.jpeg)
+![UseCase](useCaseDiagram.jpg)
 
 ## Sequence
-![Sequence](SequenceDiagram.jpeg)
+![Sequence](sequenceDiagram.jpg)
 
 ## Activity
-![Activity](ActivityDiagram.jpeg)
+![Activity](activityDiagram.jpg)
