@@ -12,7 +12,7 @@
 //•	Сортировать по возрастанию оклада
 
 // qerttyuio][p[opiouygtfdsdfghkl;
-
+// wryaey
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <stdlib.h>
