@@ -8,7 +8,7 @@
 #define _N 5
 using namespace std;
 
-
+//sdfghjghkhhyfttrtdj
 class airliner
 {
 public: static int quantity;
