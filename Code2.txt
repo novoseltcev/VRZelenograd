@@ -1,0 +1,205 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <stdlib.h>
+#include <string.h>
+
+using namespace std;
+#define N 30
+//Создайте структуру plane со следующими полями:
+struct plane {
+	char* flight_company;
+	char* name;
+	char* surname;
+	int flight,ticket_price;
+};
+
+struct ans {
+	int size;
+	plane* arr;
+};
+
+void addPassenger(plane*, int n, int i);//Добавить пассажира в структуру
+void PassengersInfo(plane*, int);		//Информация о всех пассажираъ
+void PassengerInfo(plane*, int);		//Информация о определенном пассажире
+void SpecificAviacompany(plane*, int);  //Все рейсы заданной компании
+ans SpecificFlight(plane*, int );       //Поиск всех пассажиров заданного рейса , сортировка по алфавиту.
+
+int main()
+{
+	printf("Write number of passengers\n");
+	int n;
+	cin >> n;
+	plane* passengers;
+	passengers = (struct plane*)malloc(n * sizeof(struct plane));
+	for (int i = 0; i < n; i++) {
+		printf("--------------\n");
+		addPassenger(passengers, n, i);
+	}
+	int b=1;
+	while (b) {
+		printf("\n------------\n");
+		printf("Menu:\n");
+		printf("1 - Add Passenger\n");
+		printf("2 - Passengers Info\n");
+		printf("3 - Display information about a specific passenger\n");
+		printf("4 - Display passengers using a specific aviacompany\n");
+		printf("5 - Find all passengers on specific flight\n");
+		printf("0 - Exit\n> ");
+		printf("------------\n");
+		cin >> b;
+		switch (b) {
+		case 1: {
+			plane* NewPassenger;
+			NewPassenger = (plane*)realloc(passengers, sizeof(plane) * (n + 1));
+			int count = 0;
+			while (NewPassenger == NULL) {
+				NewPassenger = (plane*)realloc(passengers, sizeof(plane) * (n + 1));
+				if (++count > 10) {
+					break;
+				}
+			}
+			passengers = NewPassenger;
+			addPassenger(passengers, n, n); 
+			n++;
+			break;
+		}
+		case 2: PassengersInfo(passengers, n); break;
+		case 3: {
+			int dp;
+			cin >> dp;
+			printf("|Surname   |Name      |Airline         |Ticket price |Flight  |\n");
+			PassengerInfo(passengers,  dp);
+			break;
+		}
+		case 4: {
+			SpecificAviacompany(passengers,  n);
+			break;
+		}
+		case 5: {
+			ans ans1 = SpecificFlight(passengers, n);
+			plane* SpecificFlight = ans1.arr;
+			int size1 = ans1.size;
+			if (size1) 
+			printf("|Surname   |Name      |Airline         |Ticket price |Fligh  |\n");
+			for (int i = 0; i < size1; i++) {
+				PassengerInfo(SpecificFlight, i);
+			}
+			break;
+
+		}
+		default: if (b) printf("Write again\n");
+		}
+	}
+	
+	
+	
+	
+	for (int i = 0; i < n; i++) {
+		plane p1 = *(passengers + i);
+		free(p1.surname);
+		free(p1.name);
+		free(p1.flight_company);
+	}
+	
+	free(passengers);
+}
+
+
+
+void addPassenger(plane* passengers, int n, int i)
+{
+
+	struct plane NewPassenger;
+	char buff[N];
+
+	printf("Write passenger surname\n ");
+	while (fgetc(stdin) != '\n');
+	gets_s(buff);
+	NewPassenger.surname = (char*)malloc(strlen(buff) + 1);
+	strcpy(NewPassenger.surname, buff);
+
+	printf("Write passenger name\n ");
+	gets_s(buff);
+	NewPassenger.name = (char*)malloc(strlen(buff) + 1);
+	strcpy(NewPassenger.name, buff);
+
+	printf("Write passenger flight company\n");
+	gets_s(buff);
+	NewPassenger.flight_company = (char*)malloc(strlen(buff) + 1);
+	strcpy(NewPassenger.flight_company, buff);
+
+	printf("Write passenger ticket price\n");
+	scanf_s("%d", &NewPassenger.ticket_price);
+
+	printf("Write passenger flight number\n");
+	scanf_s("%d", &NewPassenger.flight);
+
+	*(passengers + i) = NewPassenger;
+}
+
+void PassengersInfo(plane* passengers, int n)
+{
+	printf("|Surname   |Name      |Airline         |Ticket price |Fligh  |\n");
+	int i;
+	for (i = 0; i < n; i++) {
+		plane pas = *(passengers + i);
+		printf("|%10s|%10s|%16s|%7d|%7d|\n", pas.surname, pas.name, pas.flight_company, pas.ticket_price, pas.flight);
+	}
+}
+
+void PassengerInfo(plane* passengers, int dp)
+{
+	plane pas = *(passengers + dp);
+	printf("|%10s|%10s|%16s|%13d|%8d|\n", pas.surname, pas.name, pas.flight_company, pas.ticket_price, pas.flight);
+}
+
+void SpecificAviacompany(plane* passengers, int n)  
+{
+	printf("Write aviacompany name\n");
+	char buff[N];
+	cin >> buff;
+	for (int i = 0; i < n; i++) {
+		plane pas = *(passengers + i);
+		if (strcmp(buff, pas.flight_company) == 0)
+			printf("|%10s|%10s|%16s|%d|%d|\n", pas.surname, pas.name, pas.flight_company, pas.ticket_price, pas.flight);
+		else
+			printf("There is no passengers of the given airline");
+	}
+}
+ans SpecificFlight(plane* passangers, int  n) {    
+	int am=0;
+	int j,i;
+	printf("Write specific flight number: ");
+	int CustomFlight;
+	scanf_s("%d", &CustomFlight);
+	for (int i = 0; i < n; i++) {
+		if ((passangers + i)->flight == CustomFlight) am++;
+	}
+
+	plane* PlanesWithSameCustomFlight = (plane*)malloc(am * sizeof(plane));
+	if (am == 0) printf("There is doesn't exist flight with this number\n");
+	else {
+		j = 0;
+		for (int i = 0; i < am; i++) {
+			if ((passangers + i)->flight == CustomFlight) {
+				*(PlanesWithSameCustomFlight + j) = *(passangers + i);
+				j++;
+			}
+		}
+	}
+	//sorting 
+	for (i = 1; i < am; i++) {
+		for (j = 0; j < am - 1; j++) {
+			plane p1 = *(PlanesWithSameCustomFlight + j), p2 = *(PlanesWithSameCustomFlight + j + 1);
+			if (strcmp(p1.surname, p2.surname) > 0 ||
+				(strcmp(p1.surname, p2.surname) == 0) && (strcmp(p1.name, p2.name) > 0)) {
+				plane t = *(PlanesWithSameCustomFlight + j);
+				*(PlanesWithSameCustomFlight + j) = *(PlanesWithSameCustomFlight + j + 1);
+				*(PlanesWithSameCustomFlight + j + 1) = t;
+			}
+		}
+	}
+
+	ans ans1 = { am,  PlanesWithSameCustomFlight };
+	return ans1;
+}

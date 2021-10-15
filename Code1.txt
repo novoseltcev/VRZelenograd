@@ -1,0 +1,468 @@
+//База данных : Работник(зарплата).
+//Создать базу данных со следующей структурой :
+//char* fam; 		//Работник: Фамилия
+//char* name;		//                Имя
+//int department;	// отдел
+//double salary;	          // оклад	
+//
+//Создать обязательные функции, указанные в общих требованиях.
+//Создать функции для данного варианта :
+//•	Поиск работника по фамилии
+//•	Фильтр по отделу(найти работников заданного отдела)
+//•	Сортировать по возрастанию оклада
+
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <stdlib.h>
+#include <string.h>
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+#define N 30
+
+
+class fio {
+public:
+	char* surname;
+	char* name;
+public:
+	char* get_fsurname() { return surname; }
+	char* get_fname() { return name; }
+	void set_name(char _name[])
+	{
+
+		name = new char[strlen(_name) + 1];
+		strcpy(name, _name);
+	}
+	void set_surname(char _surname[])
+	{
+		surname = new char[strlen(_surname) + 1];
+		strcpy(surname, _surname);
+	}
+	~fio()
+	{
+		delete[] surname;
+		delete[] name;
+	}
+	fio(fio& wor) //copy constructor
+	{
+		name = new char[strlen(wor.name) + 1];
+		strcpy(name, wor.name);
+		surname = new char[strlen(wor.surname) + 1];
+		strcpy(surname, wor.surname);
+	}
+	fio()
+	{
+		name = new char[8];
+		strcpy(name, "Ivan");
+		surname = new char[9];
+		strcpy(surname, "Ivanov");
+	}
+	friend istream& operator>>(istream&, fio&);
+	bool operator==(fio);
+};
+
+
+//Создайте структуру plane со следующими полями:
+struct work {		//name
+public:
+	fio data;
+	int department;
+	double salary;
+	static int count;
+	work(int _department, char _surname[], char _name[], double _salary) //konstruktor s parametrami
+	{
+		count++;
+		data.set_name(_name);
+		data.set_surname(_surname);
+		department = _department;
+		salary = _salary;
+	}
+	work()    //bez parametrov
+	{
+		count++;
+		char* tsurname = new char[9];
+		strcpy(tsurname, "Bogomolov");
+		char* tname = new char[6];
+		strcpy(tname, "Sergey");
+		data.set_name(tname);
+		data.set_surname(tsurname);
+		salary = 1235;
+		department = 441629;
+	}
+
+
+	work(work& wor) //copy constructor
+	{
+		count++;
+		salary = wor.salary;
+		department = wor.department;
+		data = wor.data;
+	}
+	char* get_surname() { return data.get_fsurname(); }
+	char* get_name() { return data.get_fname(); }
+	work& operator =(const work&);
+	work& operator++();
+	work operator++(int);
+	bool operator==(work);
+};
+
+struct ans {
+	int size;
+	work* arr;
+};
+
+int work::count = 0;
+void addWorker(work*, int n, int i);//Добавить работника  (Done)
+void addWorker2(work*, int n, int i,fio data);
+void WorkersInfo(work*, int);		//Информация о всех работниках  (Done)
+void WorkerInfo(work*, int);		//Информация о определенном работнике  (Done-)
+void SpecificDepartment(work*, int);  //Все работники отдела  (Done)
+void SaveFile(work*, int);
+ans Sorting(work*, int);       //Сортировать по возрастанию оклада
+void rem(work Worker[], int count);
+
+int main()
+{
+	printf("Write number of workers\n");
+	system("chcp 1251");
+	int n;
+	cin >> n;
+	work* workers;
+
+	workers = new work[n];
+	for (int i = 0; i < n; i++) {
+		printf("--------------\n");
+		addWorker(workers, n, i);
+	}
+	int b = 1;
+	while (b) {
+		printf("\n------------\n");
+		printf("Menu:\n");
+		printf("1 - Add Worker\n");
+		printf("2 - All Workers Info\n");
+		printf("3 - Display information about a specific worker\n");
+		printf("4 - Display all workers in specific departament\n");
+		printf("5 - Salary sort\n");
+		printf("6 - Save File\n");
+		printf("0 - Exit\n> ");
+
+		printf("------------\n");
+		while (scanf_s("%d", &b) != 1)
+		{
+			rewind(stdin);
+			printf("error , write menu number again \n");
+		}
+		switch (b) {
+		case 1: {
+			work* NewWorker;
+			NewWorker = new work[n + 1];
+			int count = 0;
+			while (NewWorker == NULL) {
+				NewWorker = new work[n];
+				cout << "tutt";
+				if (++count > 10) {
+					break;
+				}
+			}
+			for (int i = 0; i < n; i++)
+			{
+				NewWorker[i].data.set_name(workers[i].data.get_fname());
+				NewWorker[i].data.set_surname(workers[i].data.get_fsurname());
+				NewWorker[i].salary = workers[i].salary;
+				NewWorker[i].department = workers[i].department;
+			}
+			n++;
+			WorkersInfo(NewWorker, n);
+			addWorker(NewWorker, n, n - 1);
+			WorkersInfo(NewWorker, n);
+
+			rem(workers, n - 1);
+			workers = new work[n];
+			for (int i = 0; i < n; i++)
+			{
+				workers[i].data.set_name(NewWorker[i].data.get_fname());
+				workers[i].data.set_surname(NewWorker[i].data.get_fsurname());
+				workers[i].salary = NewWorker[i].salary;
+				workers[i].department = NewWorker[i].department;
+			}
+			break;
+		}
+		case 2: WorkersInfo(workers, n); break;
+		case 3: {
+			WorkerInfo(workers, n);
+			break;
+		}
+		case 4: {
+			SpecificDepartment(workers, n);
+			break;
+		}
+		case 5: {
+			ans ans1 = Sorting(workers, n);
+			break;
+		}
+
+		case 6: {
+			SaveFile(workers, n);
+
+			break;
+		}
+		case 7: {
+			for (int i = 0; i < n; i++)
+				workers[i].~work();
+			break;
+		}
+	
+		case 8:
+		{
+			int h = 0;
+			fio newfio;
+			cin >> newfio;
+			for (int i = 0; i < n; i++)
+				if (workers[i].data == newfio) {
+					printf("|%10s|%10s|%7d|%7f|\n", workers[i].get_surname(), workers[i].get_name(), workers[i].department, workers[i].salary);
+					h++;
+				}
+			if (h == 0) {
+				work* NewWorker;
+				NewWorker = new work[n + 1];
+				int count = 0;
+				while (NewWorker == NULL) {
+					NewWorker = new work[n];
+					cout << "tutt";
+					if (++count > 10) {
+						break;
+					}
+				}
+				for (int i = 0; i < n; i++)
+				{
+					NewWorker[i].data.set_name(workers[i].data.get_fname());
+					NewWorker[i].data.set_surname(workers[i].data.get_fsurname());
+					NewWorker[i].salary = workers[i].salary;
+					NewWorker[i].department = workers[i].department;
+				}
+				n++;
+				addWorker2(NewWorker, n, n - 1, newfio);
+				WorkersInfo(NewWorker, n);
+
+				rem(workers, n - 1);
+				workers = new work[n];
+				for (int i = 0; i < n; i++)
+				{
+					workers[i].data.set_name(NewWorker[i].data.get_fname());
+					workers[i].data.set_surname(NewWorker[i].data.get_fsurname());
+					workers[i].salary = NewWorker[i].salary;
+					workers[i].department = NewWorker[i].department;
+				}
+			}
+			printf("Write departament name\n");
+			int B;
+			cin >> B;
+			work* SDworkers = new work[n];
+			int j = 0;
+			for (int i = 0; i < n; i++) {
+				if (workers[i].department == B)
+					
+					SDworkers[j] = workers[i];
+					j++;
+			}
+			for (int i = 0; i < n; i++) {
+				if (SDworkers[i].department == B)
+					printf("|%10s|%10s|%7d|%7f|\n", workers[i].get_surname(), workers[i].get_name(), workers[i].department, workers[i].salary);
+			}
+		}
+		default: if (b) printf("Write again\n");
+		}
+	}
+
+	delete[]workers;
+}
+
+
+void SaveFile(work* workers, int n)
+{
+	std::ofstream out;
+	out.open("H:\\file.txt");
+	if (out.is_open())
+	{
+		out << "|Surname   |Name      |Department		|Salary		|\n" << std::endl;
+		int i;
+		for (i = 0; i < n; i++) {
+			out << workers[i].get_surname() << "		" << workers[i].get_name() << "		" << workers[i].department << "		" << workers[i].salary << endl;
+		}
+	}
+	out.close();
+}
+
+void addWorker(work* Worker, int n, int i)
+{
+	char* surname;
+	char* name;
+	double salary;
+	int department;
+
+	char buff[N];
+
+	printf("Write worker surname\n ");
+	while (fgetc(stdin) != '\n');
+	gets_s(buff);
+	surname = (char*)malloc(strlen(buff) + 1);
+	strcpy(surname, buff);
+
+	printf("Write worker name\n ");
+	gets_s(buff);
+	name = (char*)malloc(strlen(buff) + 1);
+	strcpy(name, buff);
+
+	printf("Write worker department\n");
+	while ((scanf_s("%d", &department)) != 1 || (department < 0))
+	{
+		rewind(stdin);
+		printf("error , write departament again \n");
+	}
+
+	printf("Write worker salary\n");
+	while ((scanf_s("%lf", &salary)) != 1 || (salary < 0))
+	{
+		rewind(stdin);
+		printf("error , write salary again \n");
+	}
+
+	work NewWorker(department, surname, name, salary);
+	Worker[i].data.set_name(NewWorker.data.get_fname());
+	Worker[i].data.set_surname(NewWorker.data.get_fsurname());
+	Worker[i].salary = NewWorker.salary;
+	Worker[i].department = NewWorker.department;
+}
+
+void addWorker2(work* Worker, int n, int i , fio newfio)
+{
+	double salary;
+	int department;
+	printf("Write worker department\n");
+	while ((scanf_s("%d", &department)) != 1 || (department < 0))
+	{
+		rewind(stdin);
+		printf("error , write departament again \n");
+	}
+
+	printf("Write worker salary\n");
+	while ((scanf_s("%lf", &salary)) != 1 || (salary < 0))
+	{
+		rewind(stdin);
+		printf("error , write salary again \n");
+	}
+
+	work NewWorker(department, newfio.surname, newfio.name, salary);
+	Worker[i].data.set_name(NewWorker.data.get_fname());
+	Worker[i].data.set_surname(NewWorker.data.get_fsurname());
+	Worker[i].salary = NewWorker.salary;
+	Worker[i].department = NewWorker.department;
+}
+
+void WorkersInfo(work* workers, int n)
+{
+	printf("|Surname   |Name      |Department |Salary|\n");
+	int i;
+	for (i = 0; i < n; i++) {
+		/*work wo = *(workers + i);*/
+		printf("|%10s|%10s|%7d|%7f|\n", workers[i].data.get_fsurname(), workers[i].data.get_fname(), workers[i].department, workers[i].salary);
+	}
+}
+
+void WorkerInfo(work* workers, int n)
+{
+	printf("Write worker surname\n");
+	char buff[N];
+	cin >> buff;
+	for (int i = 0; i < n; i++) {
+		/*work wo = *(workers + i);*/
+		if (strcmp(buff, workers[i].get_surname()) == 0)
+			printf("|%10s|%10s|%7d|%7f|\n", workers[i].get_surname(), workers[i].get_name(), workers[i].department, workers[i].salary);
+	}
+}
+
+void SpecificDepartment(work* workers, int n)
+{
+	printf("Write departament name\n");
+	int B;
+	cin >> B;
+	for (int i = 0; i < n; i++) {
+		/*work wo = *(workers + i);*/
+		if (workers[i].department == B)
+			printf("|%10s|%10s|%7d|%7f|\n", workers[i].get_surname(), workers[i].get_name(), workers[i].department, workers[i].salary);
+	}
+}
+
+ans Sorting(work* workers, int  n) {
+
+	//sorting 
+	for (int i = 1; i < n; i++) {
+		for (int j = 0; j < n - 1; j++) {
+			if (workers[j].salary > workers[j + 1].salary) {
+				work t = *(workers + j);
+				*(workers + j) = *(workers + j + 1);
+				*(workers + j + 1) = t;
+			}
+		}
+	}
+
+	ans ans1 = { n,  workers };
+	return ans1;
+}
+
+void rem(work Worker[], int count)
+{
+	for (int i = 0; i < count; i++)
+		Worker[i].~work();
+}
+
+//peregruzhaem
+//>>
+istream& operator>>(istream& in, fio& fio) {
+	in >> fio.surname;
+	in >> fio.name;
+	return in;
+}
+
+
+//=
+work& work::operator =(const work& value) {
+	count = value.count;
+	department = value.department;
+	salary = value.salary;
+	data = value.data;
+	return *this;
+}
+//==
+bool fio::operator==(fio value) {
+	if ((strcoll(surname, value.surname) == 0) && (strcoll(name, value.name) == 0)) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+bool work::operator==(work value) {
+	if ((data == value.data) && (salary == value.salary) && (department == value.department)) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+bool operator==(work info, fio new_fio) {
+	if (info.data == new_fio) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+//++
+work& work::operator++() {
+	salary = salary + 10;
+	return *this;
+}
