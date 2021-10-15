@@ -2,7 +2,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <string.h>
-
+ AA A A A SDFU*TYSDFUISFSEFUETGHIEGSEGSDYIOSDHIOSDGPIOSDGIOH
 using namespace std;
 #define N 30
 //Создайте структуру plane со следующими полями:
