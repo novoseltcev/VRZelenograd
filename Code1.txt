@@ -11,6 +11,7 @@
 //•	Фильтр по отделу(найти работников заданного отдела)
 //•	Сортировать по возрастанию оклада
 
+// qerttyuio][p[opiouygtfdsdfghkl;
 
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
