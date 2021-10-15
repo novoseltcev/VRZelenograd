@@ -4,6 +4,7 @@
 #include <clocale>
 #include <time.h>
 
+#define ABOBA 1488
 #define _N 5
 using namespace std;
 
@@ -19,7 +20,7 @@ public:	void toTable()
 		{
 			printf_s("%-20d%-20s%-20f%-20d",flightNumber,secondName, ticketPrice, bagWeight);
 		}
-		airliner(int _flightNumber, char _secondName[], double _ticketPrice, int _bagWeight) //конструктор с параметрами
+		airliner(int _flightNumber, char _secondName[], double _ticketPrice, int _bagWeight) //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		{
 			quantity++;
 			flightNumber=_flightNumber;
@@ -28,7 +29,7 @@ public:	void toTable()
 			ticketPrice=_ticketPrice;
 			bagWeight=_bagWeight;
 		}
-		airliner() //конструктор без параметров
+		airliner() //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		{
 			quantity++;
 			flightNumber=1;
@@ -37,7 +38,7 @@ public:	void toTable()
 			strcpy(secondName, "Zolotarev");
 			bagWeight=0;
 		}
-		airliner(const airliner &air) //конструктор копирования
+		airliner(const airliner &air) //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		{
 			quantity=air.quantity;
 			flightNumber=air.flightNumber;
@@ -46,19 +47,19 @@ public:	void toTable()
 			secondName = new char[strlen(air.secondName) + 1];
 			strcpy(secondName, air.secondName);
 		}
-		friend void cinNSD(airliner &air)//Ввод НСД объекта с кл-ры
+		friend void cinNSD(airliner &air)//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ-пїЅпїЅ
 		{
 			char buff[50];
-			cout << "Введите номер рейса:\n ";
+			cout << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ:\n ";
 			cin >> air.flightNumber;
-			cout << "Введите фамилию:\n ";
+			cout << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ:\n ";
 			cin.ignore();
 			gets_s(buff);
 			air.secondName = new char[strlen(buff) + 1];
 			strcpy(air.secondName, buff);
-			cout << "Введите цену билета:\n ";
+			cout << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ:\n ";
 			cin >> air.ticketPrice;
-			cout << "Введите вес багажа:\n ";
+			cout << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ:\n ";
 			cin >> air.bagWeight;
 			cout << endl;
 		}
@@ -67,7 +68,7 @@ public:	void toTable()
 		char *get_secondName() {return secondName;}
 };
 
-int airliner::quantity = 0; //устанавливаем начальное значение статического поля
+int airliner::quantity = 0; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 void searchByFlight(airliner FirstDB[]);
 void searchByPrice(airliner FirstDB[]);
 void toTable(airliner FirstDB[], int N);
@@ -78,92 +79,92 @@ int main()
 	setlocale(LC_ALL, "Russian");
 	srand(time(0));
 	
-	airliner FirstDB[_N]; //Создать массив из 5 объектов,  ввод с кл-ры
-	cout << "Создаем ДБ \n";
+	airliner FirstDB[_N]; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ 5 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ,  пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ-пїЅпїЅ
+	cout << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ \n";
 	for (int i=0;i<_N;i++)
 		cinNSD(FirstDB[i]); 
 
-	int count=0; //число записей
+	int count=0; //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	for (int i=0;i<_N;i++)
 		if (FirstDB[i].quantity>count)
 			count=FirstDB[i].quantity;
 
-	cout << "Количество элементов в БД: " << count << endl;
+	cout << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ: " << count << endl;
 	
-	toTable(FirstDB, _N); //выводим таблицей
-	searchByFlight(FirstDB); //Определить общий вес багажа заданного рейса
-	searchByPrice(FirstDB); //создать базу пассажиров с билетами дороже заданного
-	DEL(FirstDB, _N); //очищаем память
+	toTable(FirstDB, _N); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	searchByFlight(FirstDB); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	searchByPrice(FirstDB); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	DEL(FirstDB, _N); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	
 	return 0;
 }
 
-void searchByFlight(airliner FirstDB[]) //Определить общий вес багажа заданного рейса
+void searchByFlight(airliner FirstDB[]) //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 {
 	bool answer = 1;
 	while (answer)
 	{
-		int count = 0; //число записей
-		int overallWeight=0; //общий вес
-		int flight; //номер рейса
-		cout << "Введите номер рейса, информацию о багаже которого хотите получить\n";
+		int count = 0; //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		int overallWeight=0; //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
+		int flight; //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+		cout << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ\n";
 		cin >> flight;
 		for (int i=0;i<_N;i++)
 			if ( flight == FirstDB[i].get_flightNumber() )
 				{
-					overallWeight+=FirstDB[i].bagWeight; //определяем вес багажа для определенного рейса
+					overallWeight+=FirstDB[i].bagWeight; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 					count ++;
 				}
 		if (count!=0)
-			cout << "Общий вес багажа рейса " << overallWeight << endl;
-		else cout << "Данного рейса нет в базе\n";
-		cout << "Начать поиск заново? (1/0)" << endl;
+			cout << "пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ " << overallWeight << endl;
+		else cout << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ\n";
+		cout << "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ? (1/0)" << endl;
 		cin >> answer;
 	}
 }
 
-void searchByPrice(airliner FirstDB[]) //создать базу пассажиров с билетами дороже заданного
+void searchByPrice(airliner FirstDB[]) //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 {
 	bool answer = 1;
 	while (answer)
 	{
-		int count = 0; //число записей
-		double price=0; //цена билета
-		int k=0; //счетчик нового массива
-		cout << "Введите цену билета\n";
+		int count = 0; //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		double price=0; //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+		int k=0; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		cout << "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ\n";
 		cin >> price;
 		
 		for (int i=0;i<_N;i++)
 			if ( FirstDB[i].get_ticketPrice() > price)
-				count ++; //считаем число элементов новой бд
-		cout << "Число пассажиров с ценой билета большей, чем " << price << ": " << count << endl;
+				count ++; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ
+		cout << "пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ " << price << ": " << count << endl;
 		if (count !=0)
 		{
-			airliner *NewDB= new airliner[count]; //создаем бд
-			for (int i=0; i<_N; i++) //заполняем бд
+			airliner *NewDB= new airliner[count]; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ
+			for (int i=0; i<_N; i++) //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ
 				if ( FirstDB[i].get_ticketPrice() > price)
 					{
 						NewDB[k]=airliner(FirstDB[i]);
 						k++;
 					} 
-			toTable(NewDB, count); //выводим в табличном виде
+			toTable(NewDB, count); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			
-			DEL(NewDB, count); //очищаем память
+			DEL(NewDB, count); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			delete []NewDB;
 		}
-		cout << "Начать поиск заново? (1/0)" << endl;
+		cout << "пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ? (1/0)" << endl;
 		cin >> answer;
 	}
 }
 
-void toTable(airliner FirstDB[], int N) //выводим таблицей
+void toTable(airliner FirstDB[], int N) //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 {
-	printf("%-20s%-20s%-20s%-20s","Номер рейса","Фамилия", "Цена билета", "Вес багажа");
+	printf("%-20s%-20s%-20s%-20s","пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ","пїЅпїЅпїЅпїЅпїЅпїЅпїЅ", "пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ", "пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ");
 	for (int i=0;i<N;i++)
 		FirstDB[i].toTable();
 }
 
-void DEL(airliner FirstDB[], int count) //очищаем память
+void DEL(airliner FirstDB[], int count) //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 {
 	for (int i=0; i<count; i++) 
 			FirstDB[i].~airliner();
