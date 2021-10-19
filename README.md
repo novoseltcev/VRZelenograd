@@ -1,5 +1,6 @@
-# VRZelenograd
-Project by VR exhibition Zelenograd attraactions
+# VR-exhibition of the sights of Zelenograd
+MIIT educational project on the discipline "Software Engineering"
+Is aimed at commercial implementation
 
 ### [Technical specification](src/technicalSpec.pdf)
 ### [UML Diagrams](src/uml/README.md)
