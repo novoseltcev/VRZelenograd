@@ -1,27 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "/home/st-a-novoseltcev/Develop/VRZelenograd/VRZelenograd/Assets/Assets.csproj": {}
+    "/home/st-a-novoseltcev/Develop/VRZelenograd/src/VRZelenograd/VRZelenograd/Assets/Assets.csproj": {}
   },
   "projects": {
-    "/home/st-a-novoseltcev/Develop/VRZelenograd/VRZelenograd/Assets/Assets.csproj": {
+    "/home/st-a-novoseltcev/Develop/VRZelenograd/src/VRZelenograd/VRZelenograd/Assets/Assets.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/st-a-novoseltcev/Develop/VRZelenograd/VRZelenograd/Assets/Assets.csproj",
+        "projectUniqueName": "/home/st-a-novoseltcev/Develop/VRZelenograd/src/VRZelenograd/VRZelenograd/Assets/Assets.csproj",
         "projectName": "Assets",
-        "projectPath": "/home/st-a-novoseltcev/Develop/VRZelenograd/VRZelenograd/Assets/Assets.csproj",
+        "projectPath": "/home/st-a-novoseltcev/Develop/VRZelenograd/src/VRZelenograd/VRZelenograd/Assets/Assets.csproj",
         "packagesPath": "/home/st-a-novoseltcev/.nuget/packages/",
-        "outputPath": "/home/st-a-novoseltcev/Develop/VRZelenograd/VRZelenograd/Assets/obj/",
+        "outputPath": "/home/st-a-novoseltcev/Develop/VRZelenograd/src/VRZelenograd/VRZelenograd/Assets/obj/",
         "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "/home/st-a-novoseltcev/.nuget/NuGet/NuGet.Config"
-        ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
-        "sources": {
-          "https://api.nuget.org/v3/index.json": {}
-        },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",

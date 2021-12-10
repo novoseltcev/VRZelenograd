@@ -8,6 +8,8 @@ public class MouseLook : MonoBehaviour {
     private float _mouseX;
     private float _mouseY;
     private float _xRotation = 0f;
+    
+    
 
     public float GetMouseX()
     {

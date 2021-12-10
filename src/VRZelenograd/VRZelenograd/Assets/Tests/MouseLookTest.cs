@@ -1,44 +1,43 @@
-using UnityEngine;
+using System.Collections;
 using NUnit.Framework;
+using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Assets.Tests;
 
-using Assets.Scripts;
-
 public class MouseLookTest
 {
-    private GameObject _player;
+    private GameObject go;
     private MouseLook _mouseLook;
     
     [SetUp]
     public void Setup()
     {
-        _player = MonoBehaviour.Instantiate(Resources.Load<GameObject>("Prefabs/Player"));
-        _mouseLook = _player.AddComponent<MouseLook>();
-        _mouseLook.Start();
-        _mouseLook.Update();
-
+        go = new GameObject();
+        _mouseLook = go.AddComponent<MouseLook>();
     }
 
     [TearDown]
     public void TearDown()
     {
-        MouseLook.Destroy(_mouseLook);
-        GameObject.Destroy(_player);
+        Object.Destroy(go);
     }
     
-    [Test]
-    public void CheckBoundary()
+    [UnityTest]
+    public IEnumerator CheckDownBoundary()
     {
+        yield return new WaitForFixedUpdate();
         Assert.Greater(0, _mouseLook.GetMouseX());
         Assert.Greater(0, _mouseLook.GetMouseY());
         Assert.Less(1, _mouseLook.GetMouseX());
         Assert.Less(1, _mouseLook.GetMouseY());
     }
     
-    // [NUnit.Framework.Test]
-    // public void CheckRotation()
-    // {
-    //     
-    // }
+    [UnityTest]
+    public IEnumerator CheckUpBoundary()
+    {
+        yield return new WaitForFixedUpdate();
+        Assert.Less(1, _mouseLook.GetMouseX());
+        Assert.Less(1, _mouseLook.GetMouseY());
+    }
 }

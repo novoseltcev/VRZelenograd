@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4Wa/YIdXlmYhTgQiSbeFsDSgZ3MGtlweNwh+psHDsXnL47xSh4GJrZkimTNWv85FUfVfC2vpwJaUGQ/kwtdy+g==",
+  "dgSpecHash": "Bqy4+1u3ISKFzXtjlHDPzaf3/C6b/kuD3pN/Yp+5LNa5PvjtH+czqxZzwVJ9l03/bM0vFNgURqK0mMxRpnOmnA==",
   "success": true,
-  "projectFilePath": "/home/st-a-novoseltcev/Develop/VRZelenograd/VRZelenograd/Assets/Assets.csproj",
+  "projectFilePath": "/home/st-a-novoseltcev/Develop/VRZelenograd/src/VRZelenograd/VRZelenograd/Assets/Assets.csproj",
   "expectedPackageFiles": [
     "/home/st-a-novoseltcev/.nuget/packages/microsoft.codecoverage/17.0.0/microsoft.codecoverage.17.0.0.nupkg.sha512",
     "/home/st-a-novoseltcev/.nuget/packages/microsoft.csharp/4.0.1/microsoft.csharp.4.0.1.nupkg.sha512",

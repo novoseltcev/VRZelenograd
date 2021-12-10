@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8e515d96-7c7b-4005-a047-cd30731ceb90" name="Changes" comment="" />
+    <list default="true" id="8e515d96-7c7b-4005-a047-cd30731ceb90" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.VRZelenograd/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VRZelenograd/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MouseLook.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MouseLook.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tests/MouseLookTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Tests/MouseLookTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/bin/Debug/net6.0/Assets.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/bin/Debug/net6.0/Assets.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/bin/Debug/net6.0/Assets.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/bin/Debug/net6.0/Assets.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/bin/Debug/net6.0/ref/Assets.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/bin/Debug/net6.0/ref/Assets.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/obj/Assets.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/obj/Assets.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/obj/Debug/net6.0/Assets.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/obj/Debug/net6.0/Assets.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/obj/Debug/net6.0/Assets.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/obj/Debug/net6.0/Assets.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/obj/Debug/net6.0/Assets.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/obj/Debug/net6.0/Assets.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/obj/Debug/net6.0/Assets.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/obj/Debug/net6.0/Assets.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/obj/Debug/net6.0/Assets.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/obj/Debug/net6.0/Assets.genruntimeconfig.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/obj/Debug/net6.0/Assets.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/obj/Debug/net6.0/Assets.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/obj/Debug/net6.0/ref/Assets.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/obj/Debug/net6.0/ref/Assets.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/obj/rider.project.restore.info" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -11,6 +30,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="225Ndtnd7Jg8ZsFssJwjwq9mvHy" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -44,13 +64,15 @@
       <option name="presentableId" value="Default" />
       <updated>1639123580725</updated>
       <workItem from="1639123585040" duration="2868000" />
+      <workItem from="1639128102527" duration="1349000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
